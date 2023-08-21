@@ -9,6 +9,8 @@ this project is for those people who wants to shop online
 user can see,search,filter,add to cart,place order,payment,send queary
 
 # Technologies Used
+
+
 Frontend:
 
 HTML: For structuring the content and elements of the web pages.
@@ -16,6 +18,8 @@ HTML: For structuring the content and elements of the web pages.
 CSS: For styling and layout, making the application visually appealing and responsive.
 
 JavaScript: For adding interactivity and dynamic behavior to the frontend.
+
+
 
 Backend:
 
