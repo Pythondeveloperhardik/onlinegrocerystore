@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/asset/css/bootstrap.min.css">
+    <title>Estore | Login Page</title>
+
+    <!-- Favicons -->
+    <link href="static/asset/images/g1.png" rel="icon">
+
+    <style>
+        .col-md-12 {
+            display: inline-block;
+            margin-top: 5%;
+        }
+
+        .col-md-12 .hbtn {
+            text-decoration: none;
+            padding: 5px;
+            border: none;
+            border-radius: 9px;
+            font-weight: bolder;
+            background-color: rgb(151, 10, 10);
+            color: whitesmoke;
+            box-shadow: 2px 2px 8px rgb(61, 41, 41);
+
+        }
+
+        .col-md-12 .hbtn :hover {
+            border: 1px solid rgb(67, 88, 8);
+            background-color: none;
+            color: rgb(67, 88, 8);
+        }
+
+        .Header {
+            padding-left: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="Header col-md-12 pl-3">
+
+            <a href="/home" style="text-decoration: none ;"><span class="hbtn">HOME</span></a>
+
+        </div>
+
+
+        <div class="row justify-content-center"><!--row start-->
+
+            <div class="col-md-4">
+                <div class="shadow mt-5 p-4 mx-auto">
+                    <h2 class="text-center text-danger">Register</h2>
+
+                    <!--##################################-->
+                    {% if errmsg %}
+
+                    <div class="alert alert-danger">
+                        {{errmsg}}
+                        <!--this for if form is emty << {{errmsg}}<< this is dictionary we made it in views-->
+                    </div>
+
+
+                    {% endif %}
+                    
+                    <!--##################################-->
+
+                    {% if success %}
+
+                    <div class="alert alert-success">
+                        {{success}}
+                        <!--this for if registered get properly  << {{errsucess}}<< this is dictionary we made it in views-->
+                    </div>
+
+
+                    {% endif %}
+                    <!--##################################-->
+
+
+                    <form method="post" action="">
+                        {% csrf_token %} <!--This is very imported for inserting data into ur form ok-->
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>User Name</strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" name="uname"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass-1" class="form-label"><strong>Password</strong></label>
+                            <input type="password" class="form-control" id="pass-1" name="upass"
+                                placeholder="type password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass-1" class="form-label"><strong>Confirm Password</strong></label>
+                            <input type="password" class="form-control" id="pass-1" name="ucpass"
+                                placeholder="type password">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-danger">Register</button>
+                            Alerady User ? <a href="/login" style="text-decoration: none;">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+          
+        </div><!--row end-->
+
+    </div>
+
+
+
+
+    <script src="static/asset/js/bootstrap.min.js"></script>
+</body>
+
+</html>

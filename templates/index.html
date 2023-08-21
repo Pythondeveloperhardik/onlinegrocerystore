@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'main' %}
+
+
+
+<style>
+    /* Add your custom styles here */
+
+    /* Product Cards */
+    .product-card {
+        height: 420px; /* Set a fixed height for the product card container */
+        margin-bottom: 20px;
+        /*border-bottom: 1px solid #ddd;*/
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Hide any overflow to ensure consistent size */
+    }
+
+    .product-image {
+        width: 100%;
+        height: 216px;
+        border-bottom: 1px solid #ddd;
+        padding: 15px;
+        /*border: 0.5px solid rgb(202, 195, 195);*/
+        border-radius: 5px 5px 0 0;
+        object-fit: cover; /* Maintain aspect ratio and fit within the container */
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .product-price {
+        font-weight: bold;
+        color: #28a745;
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .product-category {
+        color: #130f0a;
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .product-details-btn {
+        display: inline-block;
+        margin-top: 10px;
+        color: #fff;
+        background-color: #dc3545;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+
+    .product-details-btn:hover {
+        background-color: #c82333;
+    }
+</style>
+
+
+
+<!--Filter Side Bar start-->
+
+<!-- Start of the filter sidebar -->
+
+<div class="row mt-3 " style="width: 100%;">
+    <!-- Contains the filter options -->
+    <div class="col-md-3   rounded filterimage" style="margin-left: 60px;">
+        <!-- Category filter section -->
+        <h6 class="mt-2" style="margin-left: 10PX;">FILTER BY CATEGORY</h6>
+        <hr>
+        <p><a class="anchor fbtn" href="/home">By ALL Products</a></p>
+        <p><a class="anchor fbtn" href="/catfilter/1">By Vegitables</a></p>
+        <p><a class="anchor fbtn" href="/catfilter/2">By Rice</a></p>
+        <p><a class="anchor fbtn" href="/catfilter/3">By Dairy </a></p>
+
+
+        <!-- Price range filter section -->
+        <h6 class="mt-4" style="margin-left: 10PX;">FILTER BY PRICE RANGE</h6>
+        <hr>
+
+
+
+        <form action="/range">
+            <div class="mb-3">
+                <label for="Input1" class="form-label">Min value:</label>
+                <input type="number" name="min" class="form-control" id="Input1" placeholder="minimum value">
+            </div>
+
+            <div class="mb-3">
+                <label for="Input2" class="form-label">Max value:</label>
+                <input type="number" name="max" class="form-control" id="Input2" placeholder="max value">
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" class="sbtn" value="Search">
+            </div>
+        </form>
+
+
+
+
+
+        <!-- Price sorting section -->
+        <h6 style="margin-left: 10PX;">SORT BY PRICE</h6>
+        <hr>
+        <p><a class="anchor hbtn" href="/sort/0">Low to High</a></p>
+        <p><a class="anchor lbtn" href="/sort/1">High to low</a></p>
+    </div>
+
+
+    <!--Product start--------------------------------------------------------->
+
+
+
+    <div class="col-md-8">
+
+        <div class="row "> <!-- row has 12 col width so according 12 below devide into that -->
+
+
+           
+                    {% for x in availableProductinfo %}
+                        <div class="col-md-4">
+                            <div class="product-card">
+                                <img src="{{ x.pimage.url }}" class="product-image" alt="{{ x.name }}" width="100%" height="250px">
+                                <div class="product-info">
+                                    <h6 class="product-title">{{ x.name }}</h6>
+                                    <p class="product-price">MRP : ₹ {{ x.price }}</p> {# Updated MRP section #}
+                                    {% if x.cat == 1 %}
+                                        <p class="product-category">Category : Vegetables</p> {# Updated Category section #}
+                                    {% elif x.cat == 2 %}
+                                        <p class="product-category">Category : Rice</p> {# Updated Category section #}
+                                    {% else %}
+                                        <p class="product-category">Category : Dairy</p> {# Updated Category section #}
+                                    {% endif %}
+                                    <a href="/pdetails/{{ x.id }}" class="btn btn-danger product-details-btn">See Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+{% endblock 'main' %}

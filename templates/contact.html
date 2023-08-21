@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'main' %}
+
+
+
+
+
+
+
+
+<div class="row container-fluid"><!-- row class start-->
+
+    <!--===========================-->
+
+    <div class="col-md-12 mt-3">
+
+        <!--<iframe
+            src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d120581.55135249649!2d72.90419264464614!3d19.18762381157075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3be7b8d834c00235%3A0x89ff617b4a6cbf6f!2s1%2C%20Ishan%20Arcade%2C%202nd%20floor%2C%20Gokhale%20Rd%2C%20opposite%20Gaondevi%20Mandir%2C%20above%20Canara%20Bank%2C%20Thane%20West%2C%20Maharashtra%20400602!3m2!1d19.1876371!2d72.97423309999999!5e0!3m2!1sen!2sin!4v1688576833516!5m2!1sen!2sin"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30168.056245723517!2d72.82370183910615!3d19.063428493879613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8df0b86ea1b%3A0xce7eea4b1bbdf296!2sBandra%20Kurla%20Complex%2C%20Bandra%20East%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1690120452484!5m2!1sen!2sin" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!--===========================-->
+
+    <div class="col-md-6 mt-4">
+
+
+
+        <i class="bi bi-building-fill"></i>
+        <hr>
+        Business center for rent on 9th Floor, Platina, C.59, G Block, <br>
+        Bandra Kurla Complex, Near Citibank, Bandra East, 400051 Mumbai Central<br>
+        <hr>
+        <P>
+        <h6><i class="bi bi-telephone-fill text-danger"></a></i> 9999999990</h6>
+        </P>
+
+        <p>
+        <h5><i class="bi bi-envelope text-danger"></i> </a></i> customer@estore.com</h5>
+        </p>
+
+    </div>
+
+    <!--===========================-->
+
+    <div class="col-md-6 mt-4">
+        <h6><i class="bi bi-question-circle-fill text-danger"></i> </h6>
+        <hr>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="input1" class="form-label"><strong>Full Name : </strong></label>
+                <input type="text" class="form-control" name="fname" id="input1" placeholder="enter name">
+            </div>
+
+
+            <div class="mb-3">
+                <label for="input12" class="form-label"><strong>Mobile </strong></label>
+                <input type="number" class="form-control" name="fnumber" id="input12"
+                    placeholder="enter mobile number">
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="input3" class="form-label"><strong>Email</strong></label>
+                <input type="email" class="form-control" name="femail" id="input3" placeholder="enter email id">
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="input4" class="form-label"><strong>Message</strong></label>
+                <textarea type="text" class="form-control" cols="20" rows="5" name="fmsg" id="input4"
+                    placeholder="enter email id"></textarea>
+            </div>
+
+
+
+            <div class="mb-3">
+                <input type="submit" value="send" class="btn btn-danger">
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <!--===========================-->
+
+    {% endblock 'main' %}
+
+
+
+
+
+</div><!-- row class end-->
+
+
+

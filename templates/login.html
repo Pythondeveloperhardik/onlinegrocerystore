@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/asset/css/bootstrap.min.css">
+    <title>Estore | Login Page</title>
+
+    <!-- Favicons -->
+    <link href="static/asset/images/g1.png" rel="icon">
+
+    <style>
+        .col-md-12 {
+            display: inline-block;
+            margin-top: 5%;
+        }
+
+        .col-md-12 .hbtn {
+            text-decoration: none;
+            padding: 5px;
+            border: none;
+            border-radius: 9px;
+            font-weight: bolder;
+            background-color: rgb(67, 88, 8);
+            color: whitesmoke;
+            box-shadow: 2px 2px 8px rgb(68, 109, 71);
+
+        }
+
+        .col-md-12 .hbtn :hover {
+            border: 1px solid rgb(67, 88, 8);
+            background-color: none;
+            color: rgb(67, 88, 8);
+        }
+        .Header {
+            padding-left: 20px;
+        }
+        .bagg1{
+            background-image: linear-gradient(rgba(0, 255, 221, 0.336),rgba(187, 255, 0, 0.322));
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.37);
+
+        }
+       
+       
+    </style>
+
+
+</head>
+
+<body>
+
+ <div class="container-fluid ">
+    <div class="Header col-md-12 pl-3">
+
+        <a href="/home" style="text-decoration: none ;"><span class="hbtn">HOME</span></a>
+
+    </div>
+
+
+    <div class="row justify-content-center" ><!--row start-->
+       
+    
+        <div class="col-md-4 ">
+            <div class="mt-5 p-4 mx-auto bagg1">
+                <h2 class="text-center text-success">Login</h2>
+
+
+
+                 <!---------------------------------->
+                 {% if errmsg %}
+
+                 <div class="alert alert-danger">
+                     {{errmsg}}
+                     <!--this for if form is emty << {{errmsg}}<< this is dictionary we made it in views-->
+                 </div>
+
+
+                 {% endif %}
+                 
+                 <!----------------------------------------->
+
+
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>User Name</strong></label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" name="uname" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pass-1" class="form-label"><strong>Password</strong></label>
+                        <input type="password" class="form-control" id="pass-1" name="upass" placeholder="type password">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">login</button>
+                        Did you register? <a href="/register" style="text-decoration: none;">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!--row end-->
+
+</div>
+    
+
+
+
+    <script src="static/asset/js/bootstrap.min.js"></script>
+</body>
+
+</html>

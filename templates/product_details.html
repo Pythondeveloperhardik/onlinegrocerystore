@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+<style>
+    .p-price{
+        color: rgb(49, 184, 15);
+        font-weight: bold;
+    }
+    .custom-text2{
+        font-weight: bolder;
+        color: black;
+    }
+</style>
+
+ <!--*************this is main section*********************-->
+
+
+
+ <div class="row mt-5 max-auto"><!--main-->
+
+    
+    {% for x  in availableProductinfo %}
+    <div class="col-md-4">
+
+        <img src="{{x.pimage.url}}" class="img-thumbnail" width="90%" height="260px" alt="">
+    </div>
+
+    
+    <div class="col-md-4 info1">
+
+        <p><strong class="custom-text2">{{x.name}}</strong></p>
+
+
+
+        <p class="p-price"><strong>Price : </strong>{{x.price}}</p>
+        {% if x.cat == 1 %}
+        <p><strong>Category : </strong>Vegitables</p>
+        {% elif x.cat == 2 %}
+        <p><strong>Category : </strong>Rice</p>
+        {% else %}
+        <p><strong>Category : </strong>Diary</p>
+        {% endif %}
+
+
+        <p><strong>Product Description : </strong> {{x.pdetails}}</p>
+        <a href="/addtocart/{{x.id}}"><button class="btn btn-danger">Add to cart</button></a>
+        <a href="/viewcart"><button class="btn btn-warning">View Cart</button></a>
+        <a href="/home"><button class="btn btn-info">Shop More</button></a>
+
+
+         
+                    
+                    <!--##################################-->
+
+                    {% if success %}
+
+                    <div class="alert alert-success mt-3">
+                        <P>{{success}}</P>
+                        <!--this for if registered get properly  << {{errsucess}}<< this is dictionary we made it in views-->
+                    </div>
+
+
+                    {% endif %}
+
+
+
+                    
+                    {% if msg %}
+
+                    <div class="alert alert-danger mt-3">
+                        <P>{{msg}}</P>
+                        <!--this for if registered get properly  << {{errsucess}}<< this is dictionary we made it in views-->
+                    </div>
+
+
+                    {% endif %}
+       
+
+
+
+
+
+    </div>
+    {% endfor %}
+
+
+
+
+</div><!--main ends-->
+
+
+
+<!--*************this is main section END*********************-->
+
+
+
+{% endblock 'main' %}

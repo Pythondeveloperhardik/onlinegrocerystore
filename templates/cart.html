@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'main' %}
+
+<style>
+    /* Add your custom styles here */
+
+    /* Overall layout and spacing */
+    .cart-section {
+        padding-top: 30px;
+    }
+
+    /* Customer details section */
+    .customer-details {
+        margin-bottom: 20px;
+    }
+
+    /* Product details section */
+    .product-details {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .product-thumbnail {
+        flex: 0 0 100px;
+        max-width: 100px;
+        margin-right: 15px;
+    }
+
+    .product-info {
+        flex: 1;
+    }
+
+    .product-name {
+        font-weight: bold;
+    }
+
+    .product-price {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    .product-category {
+        color: #007bff;
+    }
+
+    /* Price details section */
+    .price-details {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+    }
+
+    .total-price {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .discount {
+        color: #28a745;
+    }
+
+    .delivery-charges {
+        color: #007bff;
+    }
+
+    /* Place order button */
+    .place-order-btn {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="row cart-section"><!-- Cart section -->
+    <div class="col-md-9">
+        <div class="customer-details">
+            <h5 class="head3 text-white p-2">Customer Details</h5>
+            {% for x in availableProductinfo %} 
+                {% if forloop.counter == 1 %}
+                    <p><strong>Name:</strong> {{ x.uid.first_name }}</p>
+                    <p><strong>Mobile:</strong> 3939393939</p>
+                    <p><strong>Email:</strong> {{ x.uid.email }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <h5 class="head3 text-white p-2 mt-5">Cart Details</h5>
+
+        <div class="product-list">
+            {% for x in availableProductinfo %}
+                <div class="product-details">
+                    <div class="product-thumbnail">
+                        <img class="img-thumbnail" src="{{ x.pid.pimage.url }}" alt="{{ x.pid.name }}">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">{{ x.pid.name }}</p>
+                        <p class="product-price">Price: ₹ {{ x.pid.price }}</p>
+                        {% if x.pid.cat == 1 %}
+                            <p class="product-category">Category: Vegetables</p>
+                        {% elif x.pid.cat == 2 %}
+                            <p class="product-category">Category: Rice</p>
+                        {% else %}
+                            <p class="product-category">Category: Dairy</p>
+                        {% endif %}
+                        <p><strong>Product details:</strong> {{ x.pid.pdetails }}</p>
+                        <p class="qutd">
+                            <strong>Qty:</strong>
+                            <a href="/updateqty/0/{{ x.id }}"><button class="btn btn-danger btnmin">-</button></a>
+                            <input class="innum" type="number" value="{{ x.qty }}">
+                            <a href="/updateqty/1/{{ x.id }}"><button class="btn btn-success btnplus">+</button></a>
+                        </p>
+                        <a href="/remove/{{ x.id }}">
+                            <button class="btn btn-danger">REMOVE</button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="price-details">
+            <h5 class="text-body-tertiary p-2">PRICE DETAILS</h5>
+            <hr>
+            <p><strong class="text-secondary-dark">Price (Quantity: {{ quantity }})</strong> <span class="float-end">₹ {{ total }}</span></p>
+            <p class="discount"><strong class="text-secondary-dark">Discount</strong> <span class="float-end">₹ {{ discount_amount }}</span></p>
+            <p class="delivery-charges"><strong class="text-secondary-dark">Delivery Charges</strong> <span class="float-end">FREE</span></p>
+            <hr>
+            <p class="total-price"><strong>Total amount</strong> <span class="float-end">₹ {{ discounted_total }}</span></p>
+            <a href="/place_order" class="place-order-btn"><button class="btn btn-success">PLACE ORDER</button></a>
+        </div>
+    </div>
+</div><!-- Cart section end -->
+
+{% endblock 'main' %}
