@@ -5,7 +5,9 @@ Welcome to the Online Grocery Store project! This project aims to create a web-b
 
 # About:
 This project is base on online grocery store 
+
 this project is for those people who wants to shop online
+
 user can see,search,filter,add to cart,place order,payment,send queary
 
 # Technologies Used
